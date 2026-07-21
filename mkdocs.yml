@@ -1,0 +1,17 @@
+site_name: Enterprise AI Playbook
+site_description: Canonical knowledge base for Enterprise AI Engineering
+site_author: Marquiano
+
+theme:
+  name: material
+
+markdown_extensions:
+  - admonition
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.superfences
+  - pymdownx.details
+
+plugins:
+  - search

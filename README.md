@@ -1,39 +1,57 @@
-# Enterprise AI Playbook
+﻿# Enterprise AI Playbook
 
-> Canonical knowledge base for designing, deploying, governing and operating Enterprise AI Systems.
+> An engineering knowledge base for designing, deploying, governing, evaluating and operating Enterprise AI systems.
 
-## Purpose
+## Current Status
 
-This repository documents engineering knowledge, architectural decisions and reference models for Enterprise AI.
+This repository is under active development.
 
-It is the canonical source that supports the entire Enterprise AI portfolio.
+It currently contains the foundational architecture of the Playbook. Documents are added only when they provide concrete engineering value, explicit decisions or reusable operational guidance.
 
----
+The repository does not claim comprehensive coverage yet.
 
-## Knowledge Areas
+## Start Here
 
-- Principles
-- Reference Architectures
-- Deployment
-- Governance
-- Security
-- Evaluation
-- Operations
-- Technology Decisions
-- Design Patterns
-- Case Studies
+1. [Enterprise AI Principles](docs/principles/ENTERPRISE_AI_PRINCIPLES.md)
+2. [Enterprise AI Lifecycle](docs/lifecycle/ENTERPRISE_AI_LIFECYCLE.md)
+3. [Enterprise AI Reference Architecture](docs/reference-architectures/ENTERPRISE_AI_REFERENCE_ARCHITECTURE.md)
+4. [Enterprise AI Maturity Model](docs/reference-models/ENTERPRISE_AI_MATURITY_MODEL.md)
+5. [Enterprise AI Knowledge Graph](docs/architecture/ENTERPRISE_AI_KNOWLEDGE_GRAPH.md)
+6. [Engineering Decision Records](docs/engineering-decisions/README.md)
 
----
+## Repository Purpose
 
-## Documentation
+The Playbook separates canonical engineering knowledge from runnable implementations.
 
-See:
+This repository contains:
 
-- NAVIGATION.md
-- ROADMAP.md
+- engineering principles;
+- reference architectures;
+- decision records;
+- evaluation and operational guidance;
+- maturity and assessment models;
+- documented trade-offs;
+- links to concrete implementations and case studies.
 
----
+Runnable systems and implementation examples belong in dedicated repositories.
 
-## Status
+## Quality Standard
 
-🚧 Active Development
+A document should enter the Playbook only when it provides at least one of the following:
+
+- a defensible engineering decision;
+- a reusable architecture;
+- a measurable evaluation method;
+- a concrete operational procedure;
+- a documented trade-off;
+- evidence from an implementation or case study.
+
+Pure taxonomy and empty scaffolding are not considered deliverables.
+
+## Roadmap
+
+See [ROADMAP.md](ROADMAP.md).
+
+## License
+
+Licensed under the terms described in [LICENSE](LICENSE).

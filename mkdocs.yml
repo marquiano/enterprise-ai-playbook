@@ -1,17 +1,36 @@
-site_name: Enterprise AI Playbook
-site_description: Canonical knowledge base for Enterprise AI Engineering
+﻿site_name: Enterprise AI Playbook
+site_description: Engineering knowledge base for Enterprise AI systems
 site_author: Marquiano
 
 theme:
   name: material
+
+plugins:
+  - search
 
 markdown_extensions:
   - admonition
   - tables
   - toc:
       permalink: true
-  - pymdownx.superfences
   - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
 
-plugins:
-  - search
+nav:
+  - Home: README.md
+  - Foundations:
+      - Engineering Principles: docs/principles/ENTERPRISE_AI_PRINCIPLES.md
+      - Engineering Lifecycle: docs/lifecycle/ENTERPRISE_AI_LIFECYCLE.md
+  - Architecture:
+      - Reference Architecture: docs/reference-architectures/ENTERPRISE_AI_REFERENCE_ARCHITECTURE.md
+      - Knowledge Graph: docs/architecture/ENTERPRISE_AI_KNOWLEDGE_GRAPH.md
+  - Reference Models:
+      - Maturity Model: docs/reference-models/ENTERPRISE_AI_MATURITY_MODEL.md
+  - Engineering Decisions:
+      - Decision Record Standard: docs/engineering-decisions/README.md
+      - EDR-0001 — Playbook Scope: docs/engineering-decisions/EDR-0001-PLAYBOOK-SCOPE.md
+  - Roadmap: ROADMAP.md

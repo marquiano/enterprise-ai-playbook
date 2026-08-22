@@ -18,6 +18,9 @@ The repository does not claim comprehensive coverage yet.
 4. [Enterprise AI Maturity Model](docs/reference-models/ENTERPRISE_AI_MATURITY_MODEL.md)
 5. [Enterprise AI Knowledge Graph](docs/architecture/ENTERPRISE_AI_KNOWLEDGE_GRAPH.md)
 6. [Engineering Decision Records](docs/engineering-decisions/README.md)
+7. [Enterprise AI Evaluation Strategy](docs/evaluation/ENTERPRISE_AI_EVALUATION_STRATEGY.md)
+8. [Cost and Model-Routing Playbook](docs/operational-playbooks/COST_AND_MODEL_ROUTING_PLAYBOOK.md)
+9. [AI Incident and Rollback Playbook](docs/incident-playbooks/AI_INCIDENT_AND_ROLLBACK_PLAYBOOK.md)
 
 ## Repository Purpose
 

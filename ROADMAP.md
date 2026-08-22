@@ -12,19 +12,23 @@ Planned topics are not considered part of the canonical Playbook until their sup
 |---|---|---|
 | Engineering principles | Enterprise AI Principles | Published |
 | Delivery lifecycle | Enterprise AI Lifecycle | Published |
-| System architecture | Enterprise AI Reference Architecture | Published |
+| System architecture | Enterprise AI Reference Architecture (with interface contracts and failure paths) | Published |
 | Organizational assessment | Enterprise AI Maturity Model | Published |
 | Knowledge organization | Enterprise AI Knowledge Graph | Published |
 | Repository scope decision | EDR-0001 | Accepted |
+| Model routing decision, with alternatives and trade-offs | EDR-0002 | Proposed — held pending validation against a real implementation, per its Review Notes |
+| Evaluation strategy with measurable acceptance criteria | Enterprise AI Evaluation Strategy | Published |
+| Cost and model-routing decision framework | EDR-0002 + Cost and Model-Routing Playbook | Published |
+| Production incident and rollback playbook | AI Incident and Rollback Playbook | Published |
 
 ## Next Evidence-Building Priorities
 
-1. Complete engineering decision record with alternatives and trade-offs.
-2. Worked reference architecture with contracts and failure paths.
-3. Enterprise AI evaluation strategy with measurable acceptance criteria.
-4. Cost and model-routing decision framework.
-5. Production incident and rollback playbook.
-6. End-to-end case study linked to a runnable implementation.
+1. ~~Complete engineering decision record with alternatives and trade-offs.~~ Satisfied by EDR-0002 (formatting corrected); remains **Proposed** until validated against a real implementation.
+2. ~~Worked reference architecture with contracts and failure paths.~~ Satisfied — see Enterprise AI Reference Architecture.
+3. ~~Enterprise AI evaluation strategy with measurable acceptance criteria.~~ Satisfied — see Enterprise AI Evaluation Strategy.
+4. ~~Cost and model-routing decision framework.~~ Satisfied — see EDR-0002 and the Cost and Model-Routing Playbook.
+5. ~~Production incident and rollback playbook.~~ Satisfied — see AI Incident and Rollback Playbook.
+6. **Still open:** end-to-end case study linked to a runnable implementation. Case Study 0001 is an illustrative/hypothetical placeholder only — it demonstrates the artifact shape but is explicitly not real evidence and does not satisfy this priority. This item remains open until a real, runnable implementation exists to document.
 
 ## Deferred Domains
 

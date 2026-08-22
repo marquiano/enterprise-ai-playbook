@@ -34,6 +34,9 @@ nav:
       - Decision Record Standard: docs/engineering-decisions/README.md
       - EDR-0001 — Playbook Scope: docs/engineering-decisions/EDR-0001-PLAYBOOK-SCOPE.md
       - EDR-0002 — Model Routing Strategy: docs/engineering-decisions/EDR-0002-MODEL-ROUTING-STRATEGY.md
+      - EDR-0003 — Agent Tool-Scope and Permission Boundary: docs/engineering-decisions/EDR-0003-AGENT-TOOL-PERMISSION-BOUNDARY.md
+  - Security:
+      - Prompt Injection and Jailbreak Defense: docs/engineering-patterns/PROMPT_INJECTION_AND_JAILBREAK_DEFENSE.md
   - Evaluation:
       - Evaluation Strategy: docs/evaluation/ENTERPRISE_AI_EVALUATION_STRATEGY.md
   - Operational Playbooks:

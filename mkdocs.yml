@@ -28,6 +28,7 @@ nav:
   - Architecture:
       - Reference Architecture: docs/reference-architectures/ENTERPRISE_AI_REFERENCE_ARCHITECTURE.md
       - Enterprise Agent Architecture: docs/reference-architectures/ENTERPRISE_AGENT_ARCHITECTURE.md
+      - Enterprise RAG Architecture: docs/reference-architectures/ENTERPRISE_RAG_ARCHITECTURE.md
       - Knowledge Graph: docs/architecture/ENTERPRISE_AI_KNOWLEDGE_GRAPH.md
   - Reference Models:
       - Maturity Model: docs/reference-models/ENTERPRISE_AI_MATURITY_MODEL.md
@@ -36,6 +37,7 @@ nav:
       - EDR-0001 — Playbook Scope: docs/engineering-decisions/EDR-0001-PLAYBOOK-SCOPE.md
       - EDR-0002 — Model Routing Strategy: docs/engineering-decisions/EDR-0002-MODEL-ROUTING-STRATEGY.md
       - EDR-0003 — Agent Tool-Scope and Permission Boundary: docs/engineering-decisions/EDR-0003-AGENT-TOOL-PERMISSION-BOUNDARY.md
+      - EDR-0004 — Retrieval Grounding and Citation Enforcement: docs/engineering-decisions/EDR-0004-RETRIEVAL-GROUNDING-AND-CITATION.md
   - Security:
       - Prompt Injection and Jailbreak Defense: docs/engineering-patterns/PROMPT_INJECTION_AND_JAILBREAK_DEFENSE.md
   - Evaluation:

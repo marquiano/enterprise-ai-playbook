@@ -2,6 +2,7 @@
 
 > An engineering knowledge base for designing, deploying, governing, evaluating and operating Enterprise AI systems.
 
+<!-- --8<-- [start:status] -->
 ## Current Status
 
 This repository is under active development.
@@ -9,6 +10,7 @@ This repository is under active development.
 It currently contains the foundational architecture of the Playbook. Documents are added only when they provide concrete engineering value, explicit decisions or reusable operational guidance.
 
 The repository does not claim comprehensive coverage yet.
+<!-- --8<-- [end:status] -->
 
 ## Start Here
 
@@ -28,6 +30,7 @@ The repository does not claim comprehensive coverage yet.
 14. [Enterprise AI Observability Pattern](docs/engineering-patterns/ENTERPRISE_AI_OBSERVABILITY_PATTERN.md)
 15. [AI Production Operations Playbook](docs/operational-playbooks/AI_PRODUCTION_OPERATIONS_PLAYBOOK.md)
 
+<!-- --8<-- [start:purpose] -->
 ## Repository Purpose
 
 The Playbook separates canonical engineering knowledge from runnable implementations.
@@ -56,6 +59,7 @@ A document should enter the Playbook only when it provides at least one of the f
 - evidence from an implementation or case study.
 
 Pure taxonomy and empty scaffolding are not considered deliverables.
+<!-- --8<-- [end:purpose] -->
 
 ## Roadmap
 

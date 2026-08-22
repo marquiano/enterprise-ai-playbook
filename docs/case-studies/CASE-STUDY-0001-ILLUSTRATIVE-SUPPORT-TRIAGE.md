@@ -1,6 +1,6 @@
 # Case Study 0001 — Illustrative: Support Ticket Triage
 
-> **⚠️ Illustrative / Hypothetical.** This case study does not describe a real system, organization, or measured result. No implementation exists behind it. It exists solely to demonstrate the expected shape and rigor of a Case Study artifact under the [Engineering Artifact Catalog](../ENGINEERING_ARTIFACT_CATALOG.md), and to give the model-routing and evaluation artifacts in this Playbook a worked example to reference. It must not be cited as evidence, and it does not satisfy [ROADMAP.md](../../ROADMAP.md)'s requirement for an end-to-end case study "linked to a runnable implementation" — that item remains open until a real implementation exists.
+> **⚠️ Illustrative / Hypothetical.** This case study does not describe a real system, organization, or measured result. No implementation exists behind it. It exists solely to demonstrate the expected shape and rigor of a Case Study artifact under the [Engineering Artifact Catalog](../ENGINEERING_ARTIFACT_CATALOG.md), and to give the model-routing and evaluation artifacts in this Playbook a worked example to reference. It must not be cited as evidence, and it does not satisfy [ROADMAP.md](../roadmap.md)'s requirement for an end-to-end case study "linked to a runnable implementation" — that item remains open until a real implementation exists.
 
 ---
 

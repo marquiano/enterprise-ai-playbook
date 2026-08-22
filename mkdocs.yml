@@ -1,4 +1,4 @@
-﻿site_name: Enterprise AI Playbook
+site_name: Enterprise AI Playbook
 site_description: Engineering knowledge base for Enterprise AI systems
 site_author: Marquiano
 
@@ -14,6 +14,10 @@ markdown_extensions:
   - toc:
       permalink: true
   - pymdownx.details
+  - pymdownx.snippets:
+      base_path:
+        - "."
+      check_paths: true
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid
@@ -21,38 +25,38 @@ markdown_extensions:
           format: !!python/name:pymdownx.superfences.fence_code_format
 
 nav:
-  - Home: README.md
+  - Home: index.md
   - Foundations:
-      - Engineering Principles: docs/principles/ENTERPRISE_AI_PRINCIPLES.md
-      - Engineering Lifecycle: docs/lifecycle/ENTERPRISE_AI_LIFECYCLE.md
+      - Engineering Principles: principles/ENTERPRISE_AI_PRINCIPLES.md
+      - Engineering Lifecycle: lifecycle/ENTERPRISE_AI_LIFECYCLE.md
   - Architecture:
-      - Reference Architecture: docs/reference-architectures/ENTERPRISE_AI_REFERENCE_ARCHITECTURE.md
-      - Enterprise Agent Architecture: docs/reference-architectures/ENTERPRISE_AGENT_ARCHITECTURE.md
-      - Enterprise RAG Architecture: docs/reference-architectures/ENTERPRISE_RAG_ARCHITECTURE.md
-      - Knowledge Graph: docs/architecture/ENTERPRISE_AI_KNOWLEDGE_GRAPH.md
+      - Reference Architecture: reference-architectures/ENTERPRISE_AI_REFERENCE_ARCHITECTURE.md
+      - Enterprise Agent Architecture: reference-architectures/ENTERPRISE_AGENT_ARCHITECTURE.md
+      - Enterprise RAG Architecture: reference-architectures/ENTERPRISE_RAG_ARCHITECTURE.md
+      - Knowledge Graph: architecture/ENTERPRISE_AI_KNOWLEDGE_GRAPH.md
   - Reference Models:
-      - Maturity Model: docs/reference-models/ENTERPRISE_AI_MATURITY_MODEL.md
+      - Maturity Model: reference-models/ENTERPRISE_AI_MATURITY_MODEL.md
   - Engineering Decisions:
-      - Decision Record Standard: docs/engineering-decisions/README.md
-      - EDR-0001 — Playbook Scope: docs/engineering-decisions/EDR-0001-PLAYBOOK-SCOPE.md
-      - EDR-0002 — Model Routing Strategy: docs/engineering-decisions/EDR-0002-MODEL-ROUTING-STRATEGY.md
-      - EDR-0003 — Agent Tool-Scope and Permission Boundary: docs/engineering-decisions/EDR-0003-AGENT-TOOL-PERMISSION-BOUNDARY.md
-      - EDR-0004 — Retrieval Grounding and Citation Enforcement: docs/engineering-decisions/EDR-0004-RETRIEVAL-GROUNDING-AND-CITATION.md
-      - EDR-0005 — AI Use-Case Risk Classification and Approval Gate: docs/engineering-decisions/EDR-0005-USE-CASE-RISK-CLASSIFICATION-AND-APPROVAL-GATE.md
+      - Decision Record Standard: engineering-decisions/README.md
+      - EDR-0001 — Playbook Scope: engineering-decisions/EDR-0001-PLAYBOOK-SCOPE.md
+      - EDR-0002 — Model Routing Strategy: engineering-decisions/EDR-0002-MODEL-ROUTING-STRATEGY.md
+      - EDR-0003 — Agent Tool-Scope and Permission Boundary: engineering-decisions/EDR-0003-AGENT-TOOL-PERMISSION-BOUNDARY.md
+      - EDR-0004 — Retrieval Grounding and Citation Enforcement: engineering-decisions/EDR-0004-RETRIEVAL-GROUNDING-AND-CITATION.md
+      - EDR-0005 — AI Use-Case Risk Classification and Approval Gate: engineering-decisions/EDR-0005-USE-CASE-RISK-CLASSIFICATION-AND-APPROVAL-GATE.md
   - Security:
-      - Prompt Injection and Jailbreak Defense: docs/engineering-patterns/PROMPT_INJECTION_AND_JAILBREAK_DEFENSE.md
+      - Prompt Injection and Jailbreak Defense: engineering-patterns/PROMPT_INJECTION_AND_JAILBREAK_DEFENSE.md
   - Observability:
-      - Enterprise AI Observability Pattern: docs/engineering-patterns/ENTERPRISE_AI_OBSERVABILITY_PATTERN.md
+      - Enterprise AI Observability Pattern: engineering-patterns/ENTERPRISE_AI_OBSERVABILITY_PATTERN.md
   - Evaluation:
-      - Evaluation Strategy: docs/evaluation/ENTERPRISE_AI_EVALUATION_STRATEGY.md
+      - Evaluation Strategy: evaluation/ENTERPRISE_AI_EVALUATION_STRATEGY.md
   - Operational Playbooks:
-      - Cost and Model-Routing Playbook: docs/operational-playbooks/COST_AND_MODEL_ROUTING_PLAYBOOK.md
-      - AI Governance Review Playbook: docs/operational-playbooks/AI_GOVERNANCE_REVIEW_PLAYBOOK.md
-      - AI Production Operations Playbook: docs/operational-playbooks/AI_PRODUCTION_OPERATIONS_PLAYBOOK.md
+      - Cost and Model-Routing Playbook: operational-playbooks/COST_AND_MODEL_ROUTING_PLAYBOOK.md
+      - AI Governance Review Playbook: operational-playbooks/AI_GOVERNANCE_REVIEW_PLAYBOOK.md
+      - AI Production Operations Playbook: operational-playbooks/AI_PRODUCTION_OPERATIONS_PLAYBOOK.md
   - Incident Playbooks:
-      - AI Incident and Rollback Playbook: docs/incident-playbooks/AI_INCIDENT_AND_ROLLBACK_PLAYBOOK.md
+      - AI Incident and Rollback Playbook: incident-playbooks/AI_INCIDENT_AND_ROLLBACK_PLAYBOOK.md
   - Case Studies:
-      - "Case Study 0001 (Illustrative)": docs/case-studies/CASE-STUDY-0001-ILLUSTRATIVE-SUPPORT-TRIAGE.md
+      - "Case Study 0001 (Illustrative)": case-studies/CASE-STUDY-0001-ILLUSTRATIVE-SUPPORT-TRIAGE.md
   - Reference:
-      - Engineering Artifact Catalog: docs/ENGINEERING_ARTIFACT_CATALOG.md
-  - Roadmap: ROADMAP.md
+      - Engineering Artifact Catalog: ENGINEERING_ARTIFACT_CATALOG.md
+  - Roadmap: roadmap.md

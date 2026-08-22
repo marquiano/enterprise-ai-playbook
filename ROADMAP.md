@@ -23,6 +23,8 @@ Planned topics are not considered part of the canonical Playbook until their sup
 | Agent tool-permission boundary decision | EDR-0003 | Proposed — held pending validation against a real implementation |
 | Prompt injection / jailbreak defense pattern | Prompt Injection and Jailbreak Defense | Published |
 | Agent architecture (planning, tool use, autonomy tiers) | Enterprise Agent Architecture | Published |
+| Retrieval grounding and citation enforcement decision | EDR-0004 | Proposed — held pending validation against a real implementation |
+| RAG architecture (ingestion, retrieval, grounded generation) | Enterprise RAG Architecture | Published |
 
 ## Next Evidence-Building Priorities
 
@@ -37,13 +39,12 @@ Planned topics are not considered part of the canonical Playbook until their sup
 
 The following areas remain intentionally unscaffolded until substantive content exists:
 
-- retrieval-augmented generation;
 - governance;
 - observability;
 - operations;
 - case studies.
 
-Security, evaluation, cost management, and agent architecture are no longer deferred — see EDR-0003, the Prompt Injection and Jailbreak Defense pattern, the Enterprise AI Evaluation Strategy, the Cost and Model-Routing Playbook, and the Enterprise Agent Architecture above. Security coverage to date is scoped to agent tool-permission boundaries and prompt injection/jailbreak; broader security topics (authentication/authorization architecture, data residency implementation, supply-chain risk) remain open. Agent architecture coverage is scoped to single- and delegated-agent planning/execution/autonomy; multi-agent coordination protocols beyond simple delegation remain open.
+Security, evaluation, cost management, agent architecture, and RAG are no longer deferred — see EDR-0003, the Prompt Injection and Jailbreak Defense pattern, the Enterprise AI Evaluation Strategy, the Cost and Model-Routing Playbook, the Enterprise Agent Architecture, EDR-0004, and the Enterprise RAG Architecture above. Security coverage to date is scoped to agent tool-permission boundaries and prompt injection/jailbreak; broader security topics (authentication/authorization architecture, data residency implementation, supply-chain risk) remain open. Agent architecture coverage is scoped to single- and delegated-agent planning/execution/autonomy; multi-agent coordination protocols beyond simple delegation remain open. RAG coverage is scoped to grounding/citation enforcement and the retrieval pipeline's structure; chunking-strategy trade-offs and multi-index federation remain open.
 
 ## Delivery Rule
 

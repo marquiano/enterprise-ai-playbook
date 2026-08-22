@@ -58,6 +58,8 @@ Examples:
 - Knowledge Bases
 - Internal APIs
 
+Where this layer provides retrieval-augmented generation, see the [Enterprise RAG Architecture](ENTERPRISE_RAG_ARCHITECTURE.md) for its internal structure, contracts, and failure paths.
+
 ---
 
 ### 5. Foundation Layer
@@ -196,3 +198,11 @@ Each boundary above has a corresponding way it can fail. A reference architectur
 **Detection:** step count and resource usage tracked against the task's declared budget; proposed-step intent compared against original task intent at fixed intervals.
 
 **Mitigation:** hard step/resource budgets terminate the task rather than allowing indefinite continuation, and a flagged intent divergence is treated as requiring reauthorization, not silently allowed to proceed — both per the Enterprise Agent Architecture's contracts.
+
+### Stale or Poisoned Retrieval Context
+
+**Cause:** a retrieval-augmented workload in the Enterprise Services Layer grounds a response in retrieved content that is either outdated or adversarially crafted — see the [Enterprise RAG Architecture](ENTERPRISE_RAG_ARCHITECTURE.md)'s "Index Staleness" and "Context Poisoning via Untrusted Retrieved Content" failure paths for the detailed mechanism.
+
+**Detection:** passage freshness monitoring against a declared staleness target; groundedness evaluation sampling (per the [Evaluation Strategy](../evaluation/ENTERPRISE_AI_EVALUATION_STRATEGY.md)) flagging claims grounded in content that does not actually support them.
+
+**Mitigation:** [EDR-0004](../engineering-decisions/EDR-0004-RETRIEVAL-GROUNDING-AND-CITATION.md)'s structural grounding enforcement plus the [Prompt Injection and Jailbreak Defense](../engineering-patterns/PROMPT_INJECTION_AND_JAILBREAK_DEFENSE.md) pattern's provenance controls — grounding enforcement alone does not defend against poisoned content, and injection defense alone does not defend against stale content, so both apply together.

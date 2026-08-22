@@ -34,6 +34,14 @@ nav:
       - Decision Record Standard: docs/engineering-decisions/README.md
       - EDR-0001 — Playbook Scope: docs/engineering-decisions/EDR-0001-PLAYBOOK-SCOPE.md
       - EDR-0002 — Model Routing Strategy: docs/engineering-decisions/EDR-0002-MODEL-ROUTING-STRATEGY.md
+  - Evaluation:
+      - Evaluation Strategy: docs/evaluation/ENTERPRISE_AI_EVALUATION_STRATEGY.md
+  - Operational Playbooks:
+      - Cost and Model-Routing Playbook: docs/operational-playbooks/COST_AND_MODEL_ROUTING_PLAYBOOK.md
+  - Incident Playbooks:
+      - AI Incident and Rollback Playbook: docs/incident-playbooks/AI_INCIDENT_AND_ROLLBACK_PLAYBOOK.md
+  - Case Studies:
+      - "Case Study 0001 (Illustrative)": docs/case-studies/CASE-STUDY-0001-ILLUSTRATIVE-SUPPORT-TRIAGE.md
   - Reference:
       - Engineering Artifact Catalog: docs/ENGINEERING_ARTIFACT_CATALOG.md
   - Roadmap: ROADMAP.md

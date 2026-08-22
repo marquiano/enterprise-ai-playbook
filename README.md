@@ -25,6 +25,8 @@ The repository does not claim comprehensive coverage yet.
 11. [Enterprise Agent Architecture](docs/reference-architectures/ENTERPRISE_AGENT_ARCHITECTURE.md)
 12. [Enterprise RAG Architecture](docs/reference-architectures/ENTERPRISE_RAG_ARCHITECTURE.md)
 13. [AI Governance Review Playbook](docs/operational-playbooks/AI_GOVERNANCE_REVIEW_PLAYBOOK.md)
+14. [Enterprise AI Observability Pattern](docs/engineering-patterns/ENTERPRISE_AI_OBSERVABILITY_PATTERN.md)
+15. [AI Production Operations Playbook](docs/operational-playbooks/AI_PRODUCTION_OPERATIONS_PLAYBOOK.md)
 
 ## Repository Purpose
 

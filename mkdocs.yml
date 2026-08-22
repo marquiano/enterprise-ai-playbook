@@ -27,6 +27,7 @@ nav:
       - Engineering Lifecycle: docs/lifecycle/ENTERPRISE_AI_LIFECYCLE.md
   - Architecture:
       - Reference Architecture: docs/reference-architectures/ENTERPRISE_AI_REFERENCE_ARCHITECTURE.md
+      - Enterprise Agent Architecture: docs/reference-architectures/ENTERPRISE_AGENT_ARCHITECTURE.md
       - Knowledge Graph: docs/architecture/ENTERPRISE_AI_KNOWLEDGE_GRAPH.md
   - Reference Models:
       - Maturity Model: docs/reference-models/ENTERPRISE_AI_MATURITY_MODEL.md

@@ -73,6 +73,8 @@ Includes:
 - Evaluation
 - Observability
 
+Governance's use-case classification and approval gate is decided in [EDR-0005](../engineering-decisions/EDR-0005-USE-CASE-RISK-CLASSIFICATION-AND-APPROVAL-GATE.md) and operationalized by the [AI Governance Review Playbook](../operational-playbooks/AI_GOVERNANCE_REVIEW_PLAYBOOK.md).
+
 ---
 
 ### 6. Infrastructure Layer
@@ -206,3 +208,11 @@ Each boundary above has a corresponding way it can fail. A reference architectur
 **Detection:** passage freshness monitoring against a declared staleness target; groundedness evaluation sampling (per the [Evaluation Strategy](../evaluation/ENTERPRISE_AI_EVALUATION_STRATEGY.md)) flagging claims grounded in content that does not actually support them.
 
 **Mitigation:** [EDR-0004](../engineering-decisions/EDR-0004-RETRIEVAL-GROUNDING-AND-CITATION.md)'s structural grounding enforcement plus the [Prompt Injection and Jailbreak Defense](../engineering-patterns/PROMPT_INJECTION_AND_JAILBREAK_DEFENSE.md) pattern's provenance controls — grounding enforcement alone does not defend against poisoned content, and injection defense alone does not defend against stale content, so both apply together.
+
+### Unclassified or Unapproved Use-Case Reaches Production
+
+**Cause:** a use case obtains model routing (EDR-0002) or tool authorization (EDR-0003) without first completing the risk classification and, if high-risk, approval required by [EDR-0005](../engineering-decisions/EDR-0005-USE-CASE-RISK-CLASSIFICATION-AND-APPROVAL-GATE.md) — typically because it reached those layers through a path that does not check for a registered governance record.
+
+**Detection:** the [AI Governance Review Playbook](../operational-playbooks/AI_GOVERNANCE_REVIEW_PLAYBOOK.md)'s periodic reclassification review cross-references active routing/authorization traffic against registered use cases; any traffic from an unregistered use-case identity is a gap by definition.
+
+**Mitigation:** EDR-0002's routing layer and EDR-0003's tool-authorization layer both check for a registered, classified use-case identity before granting access — the enforcement point is structural (no registration, no access), not merely procedural (a review that happens to catch it eventually).

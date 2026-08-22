@@ -168,6 +168,28 @@ A tool call executed with a scope broader than the requesting task justified, or
 
 - default classification for any new or unclassified tool is the highest risk tier, per EDR-0003's mitigation for this exact failure mode — an incident here often traces back to a tool that shipped without a completed risk classification.
 
+### 8. Runaway Agent Execution or Goal Drift
+
+An agentic workload's planning loop drifts from the original task intent or gets stuck without making progress — see the [Enterprise Agent Architecture](../reference-architectures/ENTERPRISE_AGENT_ARCHITECTURE.md)'s "Goal Drift Across Steps" and "Runaway Execution Loop" failure paths for the underlying mechanism.
+
+**Detection:**
+
+- plan-intent drift rate or task-completion-within-budget metric (per [Evaluation Strategy](../evaluation/ENTERPRISE_AI_EVALUATION_STRATEGY.md)) exceeds threshold;
+- step count or resource usage for a running task exceeds its declared budget without reaching completion.
+
+**Mitigation (immediate):**
+
+1. Terminate the task at its budget boundary — this should already be automatic per the Agent Architecture's Planner → Task Completion contract; if manual intervention was required, that contract failed to enforce and is itself part of the incident.
+2. If drift is traced to a specific intermediate step, treat as Incident Class 6 (Prompt Injection Exploited) in addition to this class if injected content is implicated.
+
+**Recovery:**
+
+3. Report the task as incomplete rather than silently retrying without limit; a human reviews whether the partial work (if any) is usable or must be discarded.
+
+**Prevention:**
+
+- every agentic task has an explicit, non-optional step and resource budget declared before execution begins — an agent without one is not eligible for production traffic, mirroring the Evaluation Strategy's "no threshold defined" is not a valid state" rule.
+
 ## Rollback Procedure (Model or Policy Version)
 
 This is the concrete procedure referenced by "rollback path" throughout this playbook and the Evaluation Strategy's Acceptance Criteria.
@@ -197,3 +219,4 @@ Every incident under this playbook produces:
 - [Enterprise AI Evaluation Strategy](../evaluation/ENTERPRISE_AI_EVALUATION_STRATEGY.md)
 - [Cost and Model-Routing Playbook](../operational-playbooks/COST_AND_MODEL_ROUTING_PLAYBOOK.md)
 - [Prompt Injection and Jailbreak Defense](../engineering-patterns/PROMPT_INJECTION_AND_JAILBREAK_DEFENSE.md)
+- [Enterprise Agent Architecture](../reference-architectures/ENTERPRISE_AGENT_ARCHITECTURE.md)

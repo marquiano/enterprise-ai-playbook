@@ -73,7 +73,7 @@ Includes:
 - Evaluation
 - Observability
 
-Governance's use-case classification and approval gate is decided in [EDR-0005](../engineering-decisions/EDR-0005-USE-CASE-RISK-CLASSIFICATION-AND-APPROVAL-GATE.md) and operationalized by the [AI Governance Review Playbook](../operational-playbooks/AI_GOVERNANCE_REVIEW_PLAYBOOK.md).
+Governance's use-case classification and approval gate is decided in [EDR-0005](../engineering-decisions/EDR-0005-USE-CASE-RISK-CLASSIFICATION-AND-APPROVAL-GATE.md) and operationalized by the [AI Governance Review Playbook](../operational-playbooks/AI_GOVERNANCE_REVIEW_PLAYBOOK.md). Observability's cross-component tracing and alerting structure is defined in the [Enterprise AI Observability Pattern](../engineering-patterns/ENTERPRISE_AI_OBSERVABILITY_PATTERN.md).
 
 ---
 
@@ -216,3 +216,11 @@ Each boundary above has a corresponding way it can fail. A reference architectur
 **Detection:** the [AI Governance Review Playbook](../operational-playbooks/AI_GOVERNANCE_REVIEW_PLAYBOOK.md)'s periodic reclassification review cross-references active routing/authorization traffic against registered use cases; any traffic from an unregistered use-case identity is a gap by definition.
 
 **Mitigation:** EDR-0002's routing layer and EDR-0003's tool-authorization layer both check for a registered, classified use-case identity before granting access — the enforcement point is structural (no registration, no access), not merely procedural (a review that happens to catch it eventually).
+
+### Observability Blind Spot Prevents Root-Causing
+
+**Cause:** a component in the request path does not propagate the shared trace identifier defined in the [Enterprise AI Observability Pattern](../engineering-patterns/ENTERPRISE_AI_OBSERVABILITY_PATTERN.md), so its records cannot be correlated with the rest of the request — an incident responder can see the routing decision, the tool authorization, or the retrieval/citation record, but not how they relate to each other for that specific request.
+
+**Detection:** trace-level reconstruction (per the Observability Pattern's Control 3) fails to produce a complete cross-component picture for a sampled set of traces; a component's records exist but never appear correlated to any trace identifier.
+
+**Mitigation:** trace propagation is verified as part of any new component's integration, not assumed — the Observability Pattern's Limitations section already names this as its core dependency: one component dropping the identifier breaks reconstruction for every request passing through it.

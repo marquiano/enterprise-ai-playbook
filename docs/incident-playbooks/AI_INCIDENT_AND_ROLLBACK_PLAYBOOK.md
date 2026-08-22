@@ -190,6 +190,31 @@ An agentic workload's planning loop drifts from the original task intent or gets
 
 - every agentic task has an explicit, non-optional step and resource budget declared before execution begins — an agent without one is not eligible for production traffic, mirroring the Evaluation Strategy's "no threshold defined" is not a valid state" rule.
 
+### 9. Ungrounded Generation or Hallucination via Retrieval Failure
+
+A retrieval-backed workload asserts a claim without valid supporting citation, or cites a passage that does not actually support the claim — a bypass of [EDR-0004](../engineering-decisions/EDR-0004-RETRIEVAL-GROUNDING-AND-CITATION.md)'s grounding enforcement, or a symptom of the [Enterprise RAG Architecture](../reference-architectures/ENTERPRISE_RAG_ARCHITECTURE.md)'s "Index Staleness" or "Silent Ungrounded Generation" failure paths.
+
+**Detection:**
+
+- citation support rate (per [Evaluation Strategy](../evaluation/ENTERPRISE_AI_EVALUATION_STRATEGY.md)) drops below threshold, or diverges from citation coverage rate;
+- passage freshness at time of use falls outside the workload's declared staleness target;
+- user-reported factual error traced to a cited or missing citation.
+
+**Mitigation (immediate):**
+
+1. Confirm whether the affected claims carry citations at all. No citation with no refusal indicates the generation-time enforcement mechanism itself failed — treat as a defect in the enforcement path, not merely a content-quality issue.
+2. If citations are present but unsupported, check passage freshness first — a stale-but-once-correct source is a different root cause than a genuinely irrelevant retrieval.
+
+**Recovery:**
+
+3. If traced to index staleness, trigger re-ingestion for the affected source and verify the corrected passage is retrievable before considering the incident resolved.
+4. If traced to an enforcement gap, follow the [Rollback Procedure](#rollback-procedure-model-or-policy-version) below for the generation policy version, consistent with any other regression.
+
+**Prevention:**
+
+- citation support rate and citation coverage rate are reviewed together on a fixed schedule (per the [Cost and Model-Routing Playbook](../operational-playbooks/COST_AND_MODEL_ROUTING_PLAYBOOK.md)'s operating-cadence pattern), not only when a user reports an error;
+- freshness targets are declared per workload before launch, per EDR-0004's Acceptance Criteria — a workload with no declared staleness target has an unbounded exposure to this incident class.
+
 ## Rollback Procedure (Model or Policy Version)
 
 This is the concrete procedure referenced by "rollback path" throughout this playbook and the Evaluation Strategy's Acceptance Criteria.
@@ -220,3 +245,5 @@ Every incident under this playbook produces:
 - [Cost and Model-Routing Playbook](../operational-playbooks/COST_AND_MODEL_ROUTING_PLAYBOOK.md)
 - [Prompt Injection and Jailbreak Defense](../engineering-patterns/PROMPT_INJECTION_AND_JAILBREAK_DEFENSE.md)
 - [Enterprise Agent Architecture](../reference-architectures/ENTERPRISE_AGENT_ARCHITECTURE.md)
+- [EDR-0004 — Retrieval Grounding and Citation Enforcement](../engineering-decisions/EDR-0004-RETRIEVAL-GROUNDING-AND-CITATION.md)
+- [Enterprise RAG Architecture](../reference-architectures/ENTERPRISE_RAG_ARCHITECTURE.md)

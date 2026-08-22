@@ -64,6 +64,18 @@ For workloads with a multi-step planning loop, per the [Enterprise Agent Archite
 - autonomy-tier compliance rate — proportion of executed steps whose risk tier matched the human-approval requirement actually applied, confirming mixed-tier tasks did not silently execute a higher-tier step without its required checkpoint;
 - delegation scope ratio — for tasks involving sub-agent delegation, granted sub-agent scope versus the delegating task's own scope, flagging cases approaching 1:1 (a signal of the Sub-Agent Scope Inheritance failure path).
 
+### Retrieval-Augmented Generation
+
+For workloads enforcing [EDR-0004](../engineering-decisions/EDR-0004-RETRIEVAL-GROUNDING-AND-CITATION.md), per the [Enterprise RAG Architecture](../reference-architectures/ENTERPRISE_RAG_ARCHITECTURE.md):
+
+- citation coverage rate — proportion of claims carrying a passage-identifier citation, versus flagged-ungrounded or refused;
+- citation support rate — proportion of cited claims where the referenced passage actually supports the claim (distinct from citation coverage; a covered but unsupported citation is the "Citation Without Support" failure mode, and is tracked separately since it is worse than an uncited claim);
+- retrieval precision/recall against a labeled query-passage reference set;
+- passage freshness at time of use — proportion of cited passages within the workload's declared staleness target;
+- cited-to-retrieved ratio — signal for context dilution from over-retrieval, per the RAG Architecture's corresponding failure path.
+
+Citation coverage rate rising while citation support rate falls is a specific regression pattern worth naming: it means the system is citing more but citing worse, which the groundedness metric alone (an aggregate) would not surface as clearly as reading the two paired.
+
 ## Methodology
 
 1. **Reference sets are versioned.** A reference/labeled set has an identifier and version; results are only comparable across runs against the same reference-set version.

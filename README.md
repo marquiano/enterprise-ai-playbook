@@ -22,6 +22,7 @@ The repository does not claim comprehensive coverage yet.
 8. [Cost and Model-Routing Playbook](docs/operational-playbooks/COST_AND_MODEL_ROUTING_PLAYBOOK.md)
 9. [AI Incident and Rollback Playbook](docs/incident-playbooks/AI_INCIDENT_AND_ROLLBACK_PLAYBOOK.md)
 10. [Prompt Injection and Jailbreak Defense](docs/engineering-patterns/PROMPT_INJECTION_AND_JAILBREAK_DEFENSE.md)
+11. [Enterprise Agent Architecture](docs/reference-architectures/ENTERPRISE_AGENT_ARCHITECTURE.md)
 
 ## Repository Purpose
 

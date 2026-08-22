@@ -55,6 +55,15 @@ Metrics are grouped by what they protect against. A workload's required metric s
 
 Unlike task-quality metrics, a rising unauthorized tool-call attempt rate is not automatically a regression — it may indicate the injection-defense pattern is under active attack while the authorization boundary is correctly holding. Both metrics must be read together, per the Reference Architecture's [failure paths](../reference-architectures/ENTERPRISE_AI_REFERENCE_ARCHITECTURE.md#failure-paths) for this incident class.
 
+### Agentic Workloads
+
+For workloads with a multi-step planning loop, per the [Enterprise Agent Architecture](../reference-architectures/ENTERPRISE_AGENT_ARCHITECTURE.md):
+
+- task completion rate within the declared step and resource budget — a task that succeeds only by exceeding its budget is not a pass;
+- plan-intent drift rate — proportion of sampled tasks where a step's declared intent diverged from the original task intent beyond the defined threshold (per the Agent Architecture's Goal Drift failure path);
+- autonomy-tier compliance rate — proportion of executed steps whose risk tier matched the human-approval requirement actually applied, confirming mixed-tier tasks did not silently execute a higher-tier step without its required checkpoint;
+- delegation scope ratio — for tasks involving sub-agent delegation, granted sub-agent scope versus the delegating task's own scope, flagging cases approaching 1:1 (a signal of the Sub-Agent Scope Inheritance failure path).
+
 ## Methodology
 
 1. **Reference sets are versioned.** A reference/labeled set has an identifier and version; results are only comparable across runs against the same reference-set version.

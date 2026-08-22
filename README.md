@@ -24,6 +24,7 @@ The repository does not claim comprehensive coverage yet.
 10. [Prompt Injection and Jailbreak Defense](docs/engineering-patterns/PROMPT_INJECTION_AND_JAILBREAK_DEFENSE.md)
 11. [Enterprise Agent Architecture](docs/reference-architectures/ENTERPRISE_AGENT_ARCHITECTURE.md)
 12. [Enterprise RAG Architecture](docs/reference-architectures/ENTERPRISE_RAG_ARCHITECTURE.md)
+13. [AI Governance Review Playbook](docs/operational-playbooks/AI_GOVERNANCE_REVIEW_PLAYBOOK.md)
 
 ## Repository Purpose
 

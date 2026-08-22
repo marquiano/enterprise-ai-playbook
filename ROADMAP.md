@@ -25,6 +25,8 @@ Planned topics are not considered part of the canonical Playbook until their sup
 | Agent architecture (planning, tool use, autonomy tiers) | Enterprise Agent Architecture | Published |
 | Retrieval grounding and citation enforcement decision | EDR-0004 | Proposed — held pending validation against a real implementation |
 | RAG architecture (ingestion, retrieval, grounded generation) | Enterprise RAG Architecture | Published |
+| Use-case risk classification and approval gate decision | EDR-0005 | Proposed — held pending validation against a real implementation |
+| Governance review process (intake, classification, approval, ownership) | AI Governance Review Playbook | Published |
 
 ## Next Evidence-Building Priorities
 
@@ -39,12 +41,11 @@ Planned topics are not considered part of the canonical Playbook until their sup
 
 The following areas remain intentionally unscaffolded until substantive content exists:
 
-- governance;
 - observability;
 - operations;
 - case studies.
 
-Security, evaluation, cost management, agent architecture, and RAG are no longer deferred — see EDR-0003, the Prompt Injection and Jailbreak Defense pattern, the Enterprise AI Evaluation Strategy, the Cost and Model-Routing Playbook, the Enterprise Agent Architecture, EDR-0004, and the Enterprise RAG Architecture above. Security coverage to date is scoped to agent tool-permission boundaries and prompt injection/jailbreak; broader security topics (authentication/authorization architecture, data residency implementation, supply-chain risk) remain open. Agent architecture coverage is scoped to single- and delegated-agent planning/execution/autonomy; multi-agent coordination protocols beyond simple delegation remain open. RAG coverage is scoped to grounding/citation enforcement and the retrieval pipeline's structure; chunking-strategy trade-offs and multi-index federation remain open.
+Security, evaluation, cost management, agent architecture, RAG, and governance are no longer deferred — see EDR-0003, the Prompt Injection and Jailbreak Defense pattern, the Enterprise AI Evaluation Strategy, the Cost and Model-Routing Playbook, the Enterprise Agent Architecture, EDR-0004, the Enterprise RAG Architecture, EDR-0005, and the AI Governance Review Playbook above. Security coverage to date is scoped to agent tool-permission boundaries and prompt injection/jailbreak; broader security topics (authentication/authorization architecture, data residency implementation, supply-chain risk) remain open. Agent architecture coverage is scoped to single- and delegated-agent planning/execution/autonomy; multi-agent coordination protocols beyond simple delegation remain open. RAG coverage is scoped to grounding/citation enforcement and the retrieval pipeline's structure; chunking-strategy trade-offs and multi-index federation remain open. Governance coverage is scoped to use-case risk classification and approval; broader governance topics (regulatory compliance mapping, board-level reporting, cross-organization policy harmonization) remain open.
 
 ## Delivery Rule
 

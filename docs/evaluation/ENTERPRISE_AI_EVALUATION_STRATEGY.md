@@ -76,6 +76,16 @@ For workloads enforcing [EDR-0004](../engineering-decisions/EDR-0004-RETRIEVAL-G
 
 Citation coverage rate rising while citation support rate falls is a specific regression pattern worth naming: it means the system is citing more but citing worse, which the groundedness metric alone (an aggregate) would not surface as clearly as reading the two paired.
 
+### Governance Compliance
+
+Per [EDR-0005](../engineering-decisions/EDR-0005-USE-CASE-RISK-CLASSIFICATION-AND-APPROVAL-GATE.md):
+
+- classification coverage rate — proportion of active production use cases with a current, recorded risk classification; this is a binary compliance metric, not a quality score, and its acceptable value is 100% — a use case either has a valid classification or it is a governance gap;
+- accountable-owner currency rate — proportion of use cases with a confirmed, non-stale accountable owner, per the [AI Governance Review Playbook](../operational-playbooks/AI_GOVERNANCE_REVIEW_PLAYBOOK.md)'s ownership-handoff procedure;
+- high-risk approval latency — time from a use case reaching High classification to recorded approval, monitored per EDR-0005's Approval Bottleneck failure mode so a growing queue is caught before teams route around the gate.
+
+Unlike the quality and safety metrics above, these are not sampled — they are checked against the full population of active use cases, since a governance gap is binary per use case, not a rate to be estimated.
+
 ## Methodology
 
 1. **Reference sets are versioned.** A reference/labeled set has an identifier and version; results are only comparable across runs against the same reference-set version.

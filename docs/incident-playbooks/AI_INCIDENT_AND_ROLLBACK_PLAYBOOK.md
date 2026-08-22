@@ -215,6 +215,29 @@ A retrieval-backed workload asserts a claim without valid supporting citation, o
 - citation support rate and citation coverage rate are reviewed together on a fixed schedule (per the [Cost and Model-Routing Playbook](../operational-playbooks/COST_AND_MODEL_ROUTING_PLAYBOOK.md)'s operating-cadence pattern), not only when a user reports an error;
 - freshness targets are declared per workload before launch, per EDR-0004's Acceptance Criteria — a workload with no declared staleness target has an unbounded exposure to this incident class.
 
+### 10. Unapproved or Unclassified AI Use-Case in Production
+
+A use case is found operating with production model routing or tool authorization but no recorded risk classification, no confirmed accountable owner, or (for high-risk use cases) no recorded approval — a bypass or gap in [EDR-0005](../engineering-decisions/EDR-0005-USE-CASE-RISK-CLASSIFICATION-AND-APPROVAL-GATE.md)'s gate, matching the Reference Architecture's "Unclassified or Unapproved Use-Case Reaches Production" failure path.
+
+**Detection:**
+
+- classification coverage rate or accountable-owner currency rate (per [Evaluation Strategy](../evaluation/ENTERPRISE_AI_EVALUATION_STRATEGY.md)) falls below 100%;
+- the [AI Governance Review Playbook](../operational-playbooks/AI_GOVERNANCE_REVIEW_PLAYBOOK.md)'s periodic reclassification review finds active traffic from an unregistered use-case identity.
+
+**Mitigation (immediate):**
+
+1. Suspend the use case's model routing and tool authorization pending classification — per EDR-0005, an unclassified or unowned use case is treated as ineligible for production access, not grandfathered in until reviewed.
+2. Identify how it obtained access without registration; if through a path that bypasses the routing/authorization layers' registration check, this is also an architecture defect, not only a process gap.
+
+**Recovery:**
+
+3. Route the use case through Use-Case Intake and Classification (per the Governance Review Playbook) before restoring access.
+4. If found high-risk, require the recorded approval before restoration, per the same procedure's High-Risk Approval step.
+
+**Prevention:**
+
+- registration checks at the routing and tool-authorization layers are structural, not advisory — an unregistered use case should have no path to either, per EDR-0005's Acceptance Criteria; an incident here often traces back to a path that was never wired through those checks.
+
 ## Rollback Procedure (Model or Policy Version)
 
 This is the concrete procedure referenced by "rollback path" throughout this playbook and the Evaluation Strategy's Acceptance Criteria.
@@ -247,3 +270,5 @@ Every incident under this playbook produces:
 - [Enterprise Agent Architecture](../reference-architectures/ENTERPRISE_AGENT_ARCHITECTURE.md)
 - [EDR-0004 — Retrieval Grounding and Citation Enforcement](../engineering-decisions/EDR-0004-RETRIEVAL-GROUNDING-AND-CITATION.md)
 - [Enterprise RAG Architecture](../reference-architectures/ENTERPRISE_RAG_ARCHITECTURE.md)
+- [EDR-0005 — AI Use-Case Risk Classification and Approval Gate](../engineering-decisions/EDR-0005-USE-CASE-RISK-CLASSIFICATION-AND-APPROVAL-GATE.md)
+- [AI Governance Review Playbook](../operational-playbooks/AI_GOVERNANCE_REVIEW_PLAYBOOK.md)

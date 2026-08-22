@@ -38,12 +38,14 @@ nav:
       - EDR-0002 — Model Routing Strategy: docs/engineering-decisions/EDR-0002-MODEL-ROUTING-STRATEGY.md
       - EDR-0003 — Agent Tool-Scope and Permission Boundary: docs/engineering-decisions/EDR-0003-AGENT-TOOL-PERMISSION-BOUNDARY.md
       - EDR-0004 — Retrieval Grounding and Citation Enforcement: docs/engineering-decisions/EDR-0004-RETRIEVAL-GROUNDING-AND-CITATION.md
+      - EDR-0005 — AI Use-Case Risk Classification and Approval Gate: docs/engineering-decisions/EDR-0005-USE-CASE-RISK-CLASSIFICATION-AND-APPROVAL-GATE.md
   - Security:
       - Prompt Injection and Jailbreak Defense: docs/engineering-patterns/PROMPT_INJECTION_AND_JAILBREAK_DEFENSE.md
   - Evaluation:
       - Evaluation Strategy: docs/evaluation/ENTERPRISE_AI_EVALUATION_STRATEGY.md
   - Operational Playbooks:
       - Cost and Model-Routing Playbook: docs/operational-playbooks/COST_AND_MODEL_ROUTING_PLAYBOOK.md
+      - AI Governance Review Playbook: docs/operational-playbooks/AI_GOVERNANCE_REVIEW_PLAYBOOK.md
   - Incident Playbooks:
       - AI Incident and Rollback Playbook: docs/incident-playbooks/AI_INCIDENT_AND_ROLLBACK_PLAYBOOK.md
   - Case Studies:

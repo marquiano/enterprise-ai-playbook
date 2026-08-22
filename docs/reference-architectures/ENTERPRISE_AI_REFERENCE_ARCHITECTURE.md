@@ -43,6 +43,8 @@ Examples:
 - Workflow Engines
 - Tool Routing
 
+When this layer is agentic — planning across multiple steps rather than producing a single response — see the [Enterprise Agent Architecture](ENTERPRISE_AGENT_ARCHITECTURE.md) for its internal structure, contracts, and failure paths.
+
 ---
 
 ### 4. Enterprise Services Layer
@@ -186,3 +188,11 @@ Each boundary above has a corresponding way it can fail. A reference architectur
 **Detection:** audit comparison of granted scope versus actually-used scope (per EDR-0003's Observability Requirements) surfaces systematic over-grants; anomalous outbound data volume or destination on a tool call is a runtime signal.
 
 **Mitigation:** EDR-0003's scoped, per-task, expiring grants with human approval for irreversible-or-external-effect operations — a static, broad grant is the precondition this failure mode requires, and EDR-0003 exists specifically to remove that precondition.
+
+### Runaway Agent Execution or Goal Drift
+
+**Cause:** an agentic AI Orchestration Layer's planning loop drifts from the original task intent over many steps, or gets stuck proposing steps without making progress — see the [Enterprise Agent Architecture](ENTERPRISE_AGENT_ARCHITECTURE.md) Failure Paths for the detailed mechanism.
+
+**Detection:** step count and resource usage tracked against the task's declared budget; proposed-step intent compared against original task intent at fixed intervals.
+
+**Mitigation:** hard step/resource budgets terminate the task rather than allowing indefinite continuation, and a flagged intent divergence is treated as requiring reauthorization, not silently allowed to proceed — both per the Enterprise Agent Architecture's contracts.

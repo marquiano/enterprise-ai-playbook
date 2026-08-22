@@ -170,3 +170,19 @@ Each boundary above has a corresponding way it can fail. A reference architectur
 **Detection:** evaluation and observability tooling (Foundation Layer) samples responses against data-sensitivity policy.
 
 **Mitigation:** output filtering is a Foundation Layer responsibility applied on the way back up, not only on the way down.
+
+### Prompt Injection Drives Unauthorized Tool Invocation
+
+**Cause:** content processed by AI Orchestration (a retrieved document, a tool result, third-party content) carries instructions that manipulate the model into proposing a tool call outside the intent of the original request. See the [Prompt Injection and Jailbreak Defense](../engineering-patterns/PROMPT_INJECTION_AND_JAILBREAK_DEFENSE.md) pattern for input-side mitigation.
+
+**Detection:** the Enterprise Services Layer's independent authorization check (already required by the Orchestration → Enterprise Services contract above) rejects a proposed call whose declared scope exceeds what the requesting task's per-task grant allows, per [EDR-0003](../engineering-decisions/EDR-0003-AGENT-TOOL-PERMISSION-BOUNDARY.md).
+
+**Mitigation:** the model's proposed tool call is never treated as self-authorizing — EDR-0003's per-task permission boundary bounds the damage even when the injection defense above is bypassed. This is why the Orchestration → Enterprise Services contract requires independent authorization rather than trusting Orchestration's claim.
+
+### Agent Tool-Scope Overreach and Data Exfiltration
+
+**Cause:** an agent is granted (or defaults to) a tool scope broader than its current task requires, and either a manipulated model or a reasoning error uses that excess scope to read data unrelated to the task or to send data to an unintended destination.
+
+**Detection:** audit comparison of granted scope versus actually-used scope (per EDR-0003's Observability Requirements) surfaces systematic over-grants; anomalous outbound data volume or destination on a tool call is a runtime signal.
+
+**Mitigation:** EDR-0003's scoped, per-task, expiring grants with human approval for irreversible-or-external-effect operations — a static, broad grant is the precondition this failure mode requires, and EDR-0003 exists specifically to remove that precondition.

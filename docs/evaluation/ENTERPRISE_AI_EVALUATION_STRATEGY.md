@@ -47,6 +47,14 @@ Metrics are grouped by what they protect against. A workload's required metric s
 - output variance across repeated identical requests, for workloads requiring determinism;
 - score delta between consecutive regression-suite runs on the same model version (should be ~0; a nonzero delta on an unchanged model version indicates measurement instability, not model drift).
 
+### Security
+
+- injection/jailbreak resistance rate — proportion of the adversarial reference set (per the [Prompt Injection and Jailbreak Defense](../engineering-patterns/PROMPT_INJECTION_AND_JAILBREAK_DEFENSE.md) pattern) that does not produce a policy-violating output or an unauthorized tool-call proposal;
+- unauthorized tool-call attempt rate — proposed tool calls rejected at the [EDR-0003](../engineering-decisions/EDR-0003-AGENT-TOOL-PERMISSION-BOUNDARY.md) authorization boundary, tracked separately from calls that were never proposed, since a rejection is the permission boundary working as intended, not itself a failure;
+- scope-to-usage ratio — granted scope versus actually-used scope per EDR-0003's audit requirement, flagging systematic over-grants.
+
+Unlike task-quality metrics, a rising unauthorized tool-call attempt rate is not automatically a regression — it may indicate the injection-defense pattern is under active attack while the authorization boundary is correctly holding. Both metrics must be read together, per the Reference Architecture's [failure paths](../reference-architectures/ENTERPRISE_AI_REFERENCE_ARCHITECTURE.md#failure-paths) for this incident class.
+
 ## Methodology
 
 1. **Reference sets are versioned.** A reference/labeled set has an identifier and version; results are only comparable across runs against the same reference-set version.

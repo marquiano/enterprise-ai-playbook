@@ -124,6 +124,50 @@ Sensitive data reaches a layer or provider not authorized for it (see the Refere
 
 - data-sensitivity classification is a mandatory, non-optional field of the normalized inference request per EDR-0002 — a request without it should never reach a provider.
 
+### 6. Prompt Injection Exploited
+
+A manipulation embedded in processed content (retrieved document, tool output, third-party content) successfully steered the model into a policy-violating output or an unauthorized tool-call proposal, despite the [Prompt Injection and Jailbreak Defense](../engineering-patterns/PROMPT_INJECTION_AND_JAILBREAK_DEFENSE.md) pattern.
+
+**Detection:**
+
+- injection/jailbreak resistance rate (per [Evaluation Strategy](../evaluation/ENTERPRISE_AI_EVALUATION_STRATEGY.md)) drops below threshold;
+- a policy-violating output or unauthorized tool-call proposal is traced to manipulated content in the request context.
+
+**Mitigation (immediate):**
+
+1. Confirm the [EDR-0003](../engineering-decisions/EDR-0003-AGENT-TOOL-PERMISSION-BOUNDARY.md) authorization boundary held — i.e., that any resulting tool-call proposal was rejected, not executed. If it was executed, this is also incident class 7 below.
+2. If the manipulation source is a specific content provider (a document source, a third-party API), suspend ingestion from that source pending review.
+
+**Recovery:**
+
+3. Add the successful manipulation to the adversarial reference set (per the pattern's Benefit of versioned test material) so the same bypass class is caught by the offline benchmark before the next release.
+
+**Prevention:**
+
+- adversarial evaluation is a release gate, not a one-time audit — every discovered bypass strengthens the gate for the next version, per the pattern's methodology.
+
+### 7. Agent Tool-Scope Violation or Data Exfiltration
+
+A tool call executed with a scope broader than the requesting task justified, or data reached a destination the task did not authorize — the [EDR-0003](../engineering-decisions/EDR-0003-AGENT-TOOL-PERMISSION-BOUNDARY.md) permission boundary was bypassed, misconfigured, or itself misclassified the operation's risk tier.
+
+**Detection:**
+
+- audit comparison of granted versus actually-used scope (per EDR-0003 Observability Requirements) flags an over-grant or an execution outside declared scope;
+- an irreversible-or-external-effect action is found to have executed without a recorded human approval.
+
+**Mitigation (immediate):**
+
+1. Revoke the implicated task's active grants and suspend the agent session.
+2. If data left an authorized boundary, treat this as a security incident in addition to this playbook — same escalation posture as [Incident Class 5 (Data Sensitivity or Cross-Layer Leakage)](#5-data-sensitivity-or-cross-layer-leakage).
+
+**Recovery:**
+
+3. Reconstruct the authorization trail per EDR-0003's Acceptance Criteria — task, scope, and any approver — to determine whether the boundary failed to enforce, or was correctly enforced against a misclassified risk tier.
+
+**Prevention:**
+
+- default classification for any new or unclassified tool is the highest risk tier, per EDR-0003's mitigation for this exact failure mode — an incident here often traces back to a tool that shipped without a completed risk classification.
+
 ## Rollback Procedure (Model or Policy Version)
 
 This is the concrete procedure referenced by "rollback path" throughout this playbook and the Evaluation Strategy's Acceptance Criteria.
@@ -148,6 +192,8 @@ Every incident under this playbook produces:
 ## Related Decisions
 
 - [EDR-0002 — Model Routing Strategy](../engineering-decisions/EDR-0002-MODEL-ROUTING-STRATEGY.md)
+- [EDR-0003 — Agent Tool-Scope and Permission Boundary](../engineering-decisions/EDR-0003-AGENT-TOOL-PERMISSION-BOUNDARY.md)
 - [Enterprise AI Reference Architecture](../reference-architectures/ENTERPRISE_AI_REFERENCE_ARCHITECTURE.md)
 - [Enterprise AI Evaluation Strategy](../evaluation/ENTERPRISE_AI_EVALUATION_STRATEGY.md)
 - [Cost and Model-Routing Playbook](../operational-playbooks/COST_AND_MODEL_ROUTING_PLAYBOOK.md)
+- [Prompt Injection and Jailbreak Defense](../engineering-patterns/PROMPT_INJECTION_AND_JAILBREAK_DEFENSE.md)

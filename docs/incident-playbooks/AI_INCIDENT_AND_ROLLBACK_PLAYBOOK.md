@@ -238,6 +238,29 @@ A use case is found operating with production model routing or tool authorizatio
 
 - registration checks at the routing and tool-authorization layers are structural, not advisory — an unregistered use case should have no path to either, per EDR-0005's Acceptance Criteria; an incident here often traces back to a path that was never wired through those checks.
 
+### 11. Missing Trace Correlation or Observability Blind Spot
+
+A component in the request path fails to propagate the shared trace identifier defined in the [Enterprise AI Observability Pattern](../engineering-patterns/ENTERPRISE_AI_OBSERVABILITY_PATTERN.md), matching the Reference Architecture's "Observability Blind Spot Prevents Root-Causing" failure path. This incident class is distinct from the others in this playbook in that it is usually discovered *while* responding to a different incident, not on its own.
+
+**Detection:**
+
+- an incident responder attempting trace-level reconstruction (per the Observability Pattern's Control 3) for another incident finds a gap — one component's records exist but cannot be correlated to the trace being investigated;
+- periodic sampling of traces for complete cross-component reconstruction, independent of any active incident.
+
+**Mitigation (immediate):**
+
+1. If discovered mid-incident, proceed with the other incident's response using whatever correlation can be manually reconstructed (timestamps, request parameters); do not let the blind spot block the primary incident's mitigation.
+2. Identify the specific component that is not propagating the trace identifier.
+
+**Recovery:**
+
+3. Fix trace propagation in the identified component and verify with a test trace that full reconstruction succeeds across all four correlated event types (routing, tool authorization, retrieval/citation, governance) before considering this resolved.
+
+**Prevention:**
+
+- trace propagation is verified as part of any new component's integration (per the Observability Pattern's Limitations), not assumed to work because the component "just passes data through";
+- the periodic sampling in Detection above runs independent of any active incident, since this failure mode is otherwise only discovered when something else already went wrong — by which point the blind spot has already cost response time once.
+
 ## Rollback Procedure (Model or Policy Version)
 
 This is the concrete procedure referenced by "rollback path" throughout this playbook and the Evaluation Strategy's Acceptance Criteria.
@@ -272,3 +295,5 @@ Every incident under this playbook produces:
 - [Enterprise RAG Architecture](../reference-architectures/ENTERPRISE_RAG_ARCHITECTURE.md)
 - [EDR-0005 — AI Use-Case Risk Classification and Approval Gate](../engineering-decisions/EDR-0005-USE-CASE-RISK-CLASSIFICATION-AND-APPROVAL-GATE.md)
 - [AI Governance Review Playbook](../operational-playbooks/AI_GOVERNANCE_REVIEW_PLAYBOOK.md)
+- [Enterprise AI Observability Pattern](../engineering-patterns/ENTERPRISE_AI_OBSERVABILITY_PATTERN.md)
+- [AI Production Operations Playbook](../operational-playbooks/AI_PRODUCTION_OPERATIONS_PLAYBOOK.md)

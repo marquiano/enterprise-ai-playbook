@@ -41,11 +41,14 @@ nav:
       - EDR-0005 — AI Use-Case Risk Classification and Approval Gate: docs/engineering-decisions/EDR-0005-USE-CASE-RISK-CLASSIFICATION-AND-APPROVAL-GATE.md
   - Security:
       - Prompt Injection and Jailbreak Defense: docs/engineering-patterns/PROMPT_INJECTION_AND_JAILBREAK_DEFENSE.md
+  - Observability:
+      - Enterprise AI Observability Pattern: docs/engineering-patterns/ENTERPRISE_AI_OBSERVABILITY_PATTERN.md
   - Evaluation:
       - Evaluation Strategy: docs/evaluation/ENTERPRISE_AI_EVALUATION_STRATEGY.md
   - Operational Playbooks:
       - Cost and Model-Routing Playbook: docs/operational-playbooks/COST_AND_MODEL_ROUTING_PLAYBOOK.md
       - AI Governance Review Playbook: docs/operational-playbooks/AI_GOVERNANCE_REVIEW_PLAYBOOK.md
+      - AI Production Operations Playbook: docs/operational-playbooks/AI_PRODUCTION_OPERATIONS_PLAYBOOK.md
   - Incident Playbooks:
       - AI Incident and Rollback Playbook: docs/incident-playbooks/AI_INCIDENT_AND_ROLLBACK_PLAYBOOK.md
   - Case Studies:

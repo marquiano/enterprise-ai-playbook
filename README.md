@@ -21,6 +21,7 @@ The repository does not claim comprehensive coverage yet.
 7. [Enterprise AI Evaluation Strategy](docs/evaluation/ENTERPRISE_AI_EVALUATION_STRATEGY.md)
 8. [Cost and Model-Routing Playbook](docs/operational-playbooks/COST_AND_MODEL_ROUTING_PLAYBOOK.md)
 9. [AI Incident and Rollback Playbook](docs/incident-playbooks/AI_INCIDENT_AND_ROLLBACK_PLAYBOOK.md)
+10. [Prompt Injection and Jailbreak Defense](docs/engineering-patterns/PROMPT_INJECTION_AND_JAILBREAK_DEFENSE.md)
 
 ## Repository Purpose
 

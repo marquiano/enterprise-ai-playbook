@@ -20,6 +20,8 @@ Planned topics are not considered part of the canonical Playbook until their sup
 | Evaluation strategy with measurable acceptance criteria | Enterprise AI Evaluation Strategy | Published |
 | Cost and model-routing decision framework | EDR-0002 + Cost and Model-Routing Playbook | Published |
 | Production incident and rollback playbook | AI Incident and Rollback Playbook | Published |
+| Agent tool-permission boundary decision | EDR-0003 | Proposed — held pending validation against a real implementation |
+| Prompt injection / jailbreak defense pattern | Prompt Injection and Jailbreak Defense | Published |
 
 ## Next Evidence-Building Priorities
 
@@ -36,13 +38,12 @@ The following areas remain intentionally unscaffolded until substantive content 
 
 - retrieval-augmented generation;
 - agent architecture;
-- security;
 - governance;
-- evaluation;
 - observability;
 - operations;
-- cost management;
 - case studies.
+
+Security, evaluation, and cost management are no longer deferred — see EDR-0003, the Prompt Injection and Jailbreak Defense pattern, the Enterprise AI Evaluation Strategy, and the Cost and Model-Routing Playbook above. Security coverage to date is scoped to agent tool-permission boundaries and prompt injection/jailbreak; broader security topics (authentication/authorization architecture, data residency implementation, supply-chain risk) remain open.
 
 ## Delivery Rule
 
